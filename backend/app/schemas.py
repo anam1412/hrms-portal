@@ -77,8 +77,11 @@ class AttendanceCreate(BaseModel):
     @field_validator("date")
     @classmethod
     def validate_date(cls, v: date) -> date:
-        from datetime import date as date_type
-        if v > date_type.today():
+        from datetime import date as date_type, timedelta
+        # Allow up to 1 day ahead of UTC to accommodate clients in timezones
+        # east of UTC (e.g. UTC+5 users marking today's local date at night).
+        max_allowed = date_type.today() + timedelta(days=1)
+        if v > max_allowed:
             raise ValueError("Cannot mark attendance for a future date")
         return v
 

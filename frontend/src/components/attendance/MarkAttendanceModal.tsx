@@ -14,12 +14,21 @@ interface Props {
 
 const STATUS_OPTIONS: AttendanceStatus[] = ['Present', 'Absent', 'Late', 'Half Day'];
 
+/** Returns today's date as YYYY-MM-DD in the user's LOCAL timezone (not UTC). */
+function localToday(): string {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm   = String(d.getMonth() + 1).padStart(2, '0');
+  const dd   = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 export function MarkAttendanceModal({ open, onClose, onSuccess }: Props) {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loadingEmps, setLoadingEmps] = useState(false);
   const [submitting, setSubmitting]   = useState(false);
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = localToday();
   const [form, setForm] = useState<AttendanceCreate>({
     employee_id: 0,
     date: today,

@@ -24,8 +24,9 @@ export default function Attendance() {
   const [error, setError]           = useState('');
   const [showModal, setShowModal]   = useState(false);
 
-  // Filters
-  const today = new Date().toISOString().split('T')[0];
+  // Filters – use local date, not UTC, so "today" is correct in every timezone
+  const _d   = new Date();
+  const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`;
   const [dateFrom, setDateFrom]     = useState('');
   const [dateTo, setDateTo]         = useState('');
   const [empFilter, setEmpFilter]   = useState('');
