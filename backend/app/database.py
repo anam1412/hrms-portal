@@ -10,11 +10,11 @@ load_dotenv()
 # Format: postgresql://user:password@host:port/dbname
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres:postgres@localhost:5432/hrms",
+    "postgresql://postgres:12345678@localhost:5432/hrms",  # local fallback
 )
 
 # For Render/Railway the URL may start with "postgres://" – SQLAlchemy requires "postgresql://"
-if DATABASE_URL.startswith("postgres://"):
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 engine = create_engine(
