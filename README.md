@@ -4,7 +4,7 @@ A full-stack, production-ready **Human Resource Management System** built with *
 
 ---
 
-## Live Demo
+## 🚀 Live Demo
 | Layer    | URL |
 |----------|-----|
 | Frontend | https://hrms-portal-blue.vercel.app |
@@ -21,10 +21,10 @@ A full-stack, production-ready **Human Resource Management System** built with *
 - **Attendance Tracking** – Mark attendance (Present / Absent / Late / Half Day), edit records, date-range filter
 
 ### Bonus
-- ✅ Total present days shown per employee
-- ✅ Filter attendance by date range, employee, and status
-- ✅ Mini summary bar on attendance page (counts per status)
-- ✅ Attendance rate progress bar on dashboard
+- Total present days shown per employee
+- Filter attendance by date range, employee, and status
+- Mini summary bar on attendance page (counts per status)
+- Attendance rate progress bar on dashboard
 
 ### UX
 - Toast notifications for all actions
@@ -173,3 +173,16 @@ npm run dev
 | GET    | `/api/dashboard/stats` | Stats summary |
 
 ---
+
+## ⚠️ Assumptions & Limitations
+
+- PostgreSQL 17 is required. Create a database named `hrms` before starting the backend.
+- SQLite is **no longer used**; the app requires a live PostgreSQL connection.
+- Leave management, payroll, and reporting are out of scope
+- Attendance statuses: **Present**, **Absent**, **Late**, **Half Day**
+- Future dates cannot be marked for attendance
+
+---
+
+## 📄 License
+MIT
