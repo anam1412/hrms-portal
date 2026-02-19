@@ -4,16 +4,16 @@ A full-stack, production-ready **Human Resource Management System** built with *
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 | Layer    | URL |
 |----------|-----|
-| Frontend | *(deploy to Vercel / Netlify)* |
-| Backend  | *(deploy to Render / Railway)* |
-| API Docs | `<backend-url>/docs` |
+| Frontend | https://hrms-portal-blue.vercel.app |
+| Backend  | https://hrms-portal-6oro.onrender.com |
+| API Docs | https://hrms-portal-6oro.onrender.com/docs |
 
 ---
 
-## ✨ Features
+## Features
 
 ### Core
 - **Dashboard** – Live attendance rate, stat cards, recent employees, quick-action shortcuts
@@ -34,30 +34,32 @@ A full-stack, production-ready **Human Resource Management System** built with *
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
-| Layer     | Technology |
-|-----------|-----------|
-| Frontend  | React 18, TypeScript, Vite, Tailwind CSS |
-| Icons     | Lucide React |
-| Toast     | react-hot-toast |
-| Routing   | React Router v7 |
-| Dates     | date-fns |
-| HTTP      | Axios |
-| Backend   | Python 3.11+, FastAPI, SQLAlchemy |
-| Database  | PostgreSQL 17 |
-| Validation| Pydantic v2 |
+### Frontend
+- **React 18** - Modern UI library
+- **Vite** - Fast build tool and dev server
+- **React Router** - Client-side routing
+- **Axios** - HTTP client for API calls
+- **CSS3** - Custom styling with CSS variables
+
+### Backend
+- **FastAPI** - Modern Python web framework
+- **SQLAlchemy** - SQL toolkit and ORM
+- **PostgreSQL** - Relational database
+- **Pydantic** - Data validation
+- **Uvicorn** - ASGI server
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hrms/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py          # FastAPI app + CORS + routers
-│   │   ├── database.py      # SQLAlchemy engine & session
+│   │   ├── database.py      # Postgresql
 │   │   ├── models.py        # Employee & Attendance ORM models
 │   │   ├── schemas.py       # Pydantic schemas & validation
 │   │   └── routers/
@@ -83,7 +85,7 @@ hrms/
 
 ---
 
-## ⚡ Running Locally
+## Running Locally
 
 ### Prerequisites
 - Python 3.11+
@@ -125,18 +127,19 @@ npm run dev
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 ### Backend → Render
 
 1. Push your repository to GitHub
-2. Create a new **Web Service** on [render.com](https://render.com)
-3. Root directory: `backend`
-4. Build command: `pip install -r requirements.txt`
-5. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-5. Add environment variable: `DATABASE_URL=postgresql://user:pass@host/dbname`
+2. Create a new Postgresql, add Database name and use the external render database url to connect to render database and in render while deploying we can             proceed with step 7 to add env variable.
+3. Create a new **Web Service** on [render.com](https://render.com)
+4. Root directory: `backend`
+5. Build command: `pip install -r requirements.txt`
+6. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+7. Add environment variable: `DATABASE_URL=postgresql://user:pass@host/dbname`
 
-### Frontend → Vercel / Netlify
+### Frontend → Vercel
 
 1. Set root directory to `frontend`
 2. Build command: `npm run build`
@@ -145,7 +148,7 @@ npm run dev
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Employees
 | Method | Path | Description |
@@ -170,16 +173,3 @@ npm run dev
 | GET    | `/api/dashboard/stats` | Stats summary |
 
 ---
-
-## ⚠️ Assumptions & Limitations
-
-- PostgreSQL 17 is required. Create a database named `hrms` before starting the backend.
-- SQLite is **no longer used**; the app requires a live PostgreSQL connection.
-- Leave management, payroll, and reporting are out of scope
-- Attendance statuses: **Present**, **Absent**, **Late**, **Half Day**
-- Future dates cannot be marked for attendance
-
----
-
-## 📄 License
-MIT
